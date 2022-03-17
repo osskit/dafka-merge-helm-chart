@@ -36,6 +36,7 @@ startupProbe:
     path: /ready
     port: *port
 livenessProbe:
+  initialDelaySeconds: 30
   httpGet:
     # -- the path for liveness check
     path: /ready
