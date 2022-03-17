@@ -1,6 +1,6 @@
 # dafka-merge
 
-![Version: 0.0.4](https://img.shields.io/badge/Version-0.0.4-informational?style=flat-square)
+![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square)
 
 A Helm Chart for Dafka Filter
 
@@ -11,12 +11,17 @@ A Helm Chart for Dafka Filter
 | name | string | `"kafka-stream-merge"` | name for this stream |
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
-| sourceTopic | string | `nil` | source topic |
-| filters | string | `nil` | filters |
+| sourceTopic1 | string | `nil` | source topic 1 |
+| sourceTopic1Projection | string | `nil` | projection topic 1 |
+| sourceTopic2 | string | `nil` | source topic 2 |
+| sourceTopic2Projection | string | `nil` | projection topic 2 |
 | destinationTopic | string | `nil` | destination topic |
 | image.name | string | `"osskit/dafka-merge"` | the image name to use |
 | image.tag | string | `"0.1"` | the image tag to use |
-| livenessProbe.httpGet.path | string | `"/up"` | the path for liveness check |
+| startupProbe.initialDelaySeconds | int | `60` |  |
+| startupProbe.httpGet.path | string | `"/ready"` | the path for startup check |
+| startupProbe.httpGet.port | int | `3000` |  |
+| livenessProbe.httpGet.path | string | `"/ready"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
